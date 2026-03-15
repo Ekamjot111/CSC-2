@@ -1,112 +1,124 @@
-
-
+/* This styles the whole page */
 body {
-    font-family: Arial, sans-serif;
-    margin: 0;
-    background-color: #f4f4f4;
+    font-family: Arial, sans-serif; /* Font */
+    margin: 0; /* browser spacing */
+    background-color: #f4f4f4; /* Light grey background colour */
 }
 
 
+/* Header section at the top of the page */
 header {
-    background-color: darkorange;
-    color: white;
-    text-align: center;
-    padding: 20px;
+    background-color: darkorange; /* Background colour of header */
+    color: white; /* Text colour */
+    text-align: center; /* Centers the title */
+    padding: 20px; /* Adds space inside the header */
 }
 
+
+/* Navigation bar styling */
 nav {
-    background-color: black;
-    text-align: center;
-    padding: 10px;
+    background-color: black; /* Black background */
+    text-align: center; /* Centers navigation links */
+    padding: 10px; /* Space inside navigation bar */
 }
 
 
+/* Styling for navigation links */
 nav a {
-    color: white;
-    text-decoration: none;
-    margin: 15px;
-    font-weight: bold;
+    color: white; /* Link colour */
+    text-decoration: none; /* Removes underline from links */
+    margin: 15px; /* Space between links */
+    font-weight: bold; /* Makes the text bold */
 }
 
 
+/* Hover effect when the mouse is over the links */
 nav a:hover {
-    color: darkorange;
-    text-decoration: underline;
-
+    color: darkorange; /* Changes colour when hovered */
+    text-decoration: underline; /* Adds underline when hovered */
 }
 
 
+/* Main content area */
 main {
-    padding: 20px;
-    text-align: center;
+    padding: 20px; /* Space inside the main section */
+    text-align: center; /* Centers the text content */
 }
 
+
+/* Styling for lists */
 ul {
-    list-style-position: inside;
-    display: inline-block;
-    text-align: left;
+    list-style-position: inside; /* Keeps bullet points inside text block */
+    display: inline-block; /* Allows list to stay centered */
+    text-align: left; /* Aligns list text to the left */
 }
 
+
+/* Spacing between different sections */
 section {
-    margin-bottom: 30px;
+    margin-bottom: 30px; /* Space below each section */
 }
 
 
+/* General styling for all images */
 img {
-    border-radius: 10px;
-    margin-top: 10px;
+    border-radius: 10px; /* Rounds the corners of images */
+    margin-top: 10px; /* Adds space above images */
 }
 
 
+/* Footer styling */
 footer {
-    background-color: black;
-    color: white;
-    text-align: center;
-    padding: 15px;
+    background-color: black; /* Footer background */
+    color: white; /* Text colour */
+    text-align: center; /* Centers footer text */
+    padding: 15px; /* Space inside footer */
 }
 
+
+/* Table styling (used on NBA legends page) */
 table {
-    width: 80%;
-    margin: auto;
-    border-collapse: collapse;
-    text-align: center;
+    width: 80%; /* 80% of page width */
+    margin: auto; /* Centers the table */
+    border-collapse: collapse; /* Removes gaps between table borders */
+    text-align: center; /* Centers table text */
 }
 
+
+/* Styling for th and td */
 th, td {
-    border: 2px solid black;
-    padding: 15px;
+    border: 2px solid black; /* Adds borders  */
+    padding: 15px; /* Space inside */
 }
 
+
+/* Table header styling */
 th {
-    background-color: orange;
-    color: white;
+    background-color: orange; /* Header background */
+    color: white; /* Header text colour */
 }
 
-img {
-    border-radius: 10px;
-}
 
+/* Gallery container using grid layout */
 .gallery {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 20px;
-    width: 80%;
-    margin: 40px auto;
+    display: grid; /* Enables grid layout */
+    grid-template-columns: repeat(3, 1fr); /* Creates 3 equal columns */
+    gap: 20px; /* Space between images */
+    width: 80%; /* Gallery width */
+    margin: 40px auto; /* Centers gallery with space above */
 }
 
+
+/* Styling for gallery images */
 .gallery img {
-    width: 100%;
-    height: 250px;
-    border-radius: 15px;
-    margin-bottom: 20px;
-    
+    width: 100%; /* Image fills its grid space */
+    height: 250px; /* Fixed image height */
+    border-radius: 15px; /* Rounded corners */
+    margin-bottom: 20px; /* Space below images */
 }
 
+
+/* Hover effect for gallery images */
 .gallery img:hover {
-    transform: scale(1.05);
+    transform: scale(1.05); /* Slight zoom effect when hovered */
 }
-
-.gallery img:hover {
-    transform: scale(1.05);
-}
-
