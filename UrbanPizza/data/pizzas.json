@@ -1,6 +1,6 @@
 {
     "classic": {
-        "NY Style Pepperoni": {"prices": {"Small": 8.50, "Medium": 11.50, "Large": 14.50}, "stock": 50},
+        "New York Style Pepperoni": {"prices": {"Small": 8.50, "Medium": 11.50, "Large": 14.50}, "stock": 50},
         "Downtown Hawaiian": {"prices": {"Small": 8.50, "Medium": 11.50, "Large": 14.50}, "stock": 50},
         "Meatlovers": {"prices": {"Small": 8.50, "Medium": 11.50, "Large": 14.50}, "stock": 50},
         "BBQ Chicken": {"prices": {"Small": 8.50, "Medium": 11.50, "Large": 14.50}, "stock": 50}
