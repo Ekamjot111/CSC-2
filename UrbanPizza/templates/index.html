@@ -1,0 +1,108 @@
+{% extends "base.html" %}
+
+{% block title %}Online Order - Urban Pizza{% endblock %}
+
+{% block content %}
+
+<h2>Place Your Order</h2>
+
+{% with messages = get_flashed_messages() %}
+  {% if messages %}
+    <div class="flash-messages" style="background-color: #d4edda; color: #155724; padding: 10px; margin-bottom: 15px; border-radius: 5px;">
+      {% for message in messages %}
+        <p style="margin: 0; font-weight: bold;">{{ message }}</p>
+      {% endfor %}
+    </div>
+  {% endif %}
+{% endwith %}
+
+    <form action="{{ url_for('add_to_cart') }}" method="post">
+        <fieldset>
+            <legend>1. Choose Your Pizza</legend>
+
+            <label for="pizza">Pizza:</label>
+
+            <select name="pizza" id="pizza">
+                <!-- Vegetarian selections -->
+                <optgroup label="Vegetarian">
+                {% for pizza, details in pizzas.vegetarian.items() %}
+                    <option value="{{ pizza }}">{{ pizza }} (S: ${{ '%.2f' % details.prices.Small }} | M: ${{ '%.2f' % details.prices.Medium }} | L: ${{ '%.2f' % details.prices.Large }})</option>
+                {% endfor %}
+                </optgroup>
+                <!-- Classic selections -->
+                <optgroup label="Classic">
+                {% for pizza, details in pizzas.classic.items() %}
+                    <option value="{{ pizza }}">{{ pizza }} (S: ${{ '%.2f' % details.prices.Small }} | M: ${{ '%.2f' % details.prices.Medium }} | L: ${{ '%.2f' % details.prices.Large }})</option>
+                {% endfor %}
+                </optgroup>
+                <!-- Gourmet selections -->
+                <optgroup label="Gourmet">
+                {% for pizza, details in pizzas.gourmet.items() %}
+                    <option value="{{ pizza }}">{{ pizza }} (S: ${{ '%.2f' % details.prices.Small }} | M: ${{ '%.2f' % details.prices.Medium }} | L: ${{ '%.2f' % details.prices.Large }})</option>
+                {% endfor %}
+                </optgroup>
+            </select>
+
+              <!-- Size selection -->
+            <label for="size">Size</label>
+            <select type="size" name="size">
+                <option value="Small">Small</option>
+                <option value="Medium" selected>Medium</option>
+                <option value="Large">Large</option>
+            </select>
+            <label for="quantity">Quantity</label>
+            <input type="number" name="quantity" value="1" min="1" max="5">
+
+            <button type="submit">Add to Cart</button>
+        </fieldset>
+    </form>
+    
+    <!-- Add-ons Selection Form -->
+    <form action="{{ url_for('select_addon') }}" method="post">
+    <fieldset>
+        <legend>2. Choose Drinks & Sides</legend>
+        {% for addon, data in addons.items() %}
+            <label>
+                <input type="checkbox" name="addons" value="{{ addon }}">
+                {{ addon }} (+${{ '%.2f' % data.price }})
+            </label><br>
+        {% endfor %}
+    </fieldset>
+    <button type="submit">Update Extras</button>
+</form>
+    
+    <br>
+    <!-- Users Cart -->
+    <h2>Your Cart</h2>
+
+    <form action="{{ url_for('checkout') }}" method="post">
+    {% if cart %}
+        <h3>Pizzas</h3>
+        <ul>
+            {% for item, details in cart.items() %}
+                <li>
+                    <strong>{{ item }}</strong> - {{ details['quantity'] }} x ${{ '%.2f' % details['price'] }} 
+                    = ${{ '%.2f' % (details['quantity'] * details['price']) }}
+                    <a href="{{ url_for('remove_from_cart', item=item) }}" style="color: red;">[Remove]</a>
+                </li>
+            {% endfor %}
+        </ul>
+    {% else %}
+        <p>Your cart is currently empty.</p>
+    {% endif %}
+
+    {% if selected_addons %}
+        <h3>Drinks & Sides</h3>
+        <ul>
+            {% for addon, price in selected_addons.items() %} 
+            <li>
+                {{ addon }} - ${{ '%.2f' % price }}
+            </li>
+            {% endfor %}
+        </ul>
+    {% endif %}
+
+    <h4>Subtotal: ${{ '%.2f' % total }}</h4>
+
+
+{% endblock %}
