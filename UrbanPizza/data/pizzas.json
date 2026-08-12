@@ -1,0 +1,20 @@
+{
+    "classic": {
+        "NY Style Pepperoni": {"prices": {"Small": 8.50, "Medium": 11.50, "Large": 14.50}, "stock": 50},
+        "Downtown Hawaiian": {"prices": {"Small": 8.50, "Medium": 11.50, "Large": 14.50}, "stock": 50},
+        "Meatlovers": {"prices": {"Small": 8.50, "Medium": 11.50, "Large": 14.50}, "stock": 50},
+        "BBQ Chicken": {"prices": {"Small": 8.50, "Medium": 11.50, "Large": 14.50}, "stock": 50}
+    },
+    "vegetarian": {
+        "Classic Cheese": {"prices": {"Small": 8.50, "Medium": 11.50, "Large": 14.50}, "stock": 50},
+        "Cheesy Garlic": {"prices": {"Small": 8.50, "Medium": 11.50, "Large": 14.50}, "stock": 50},
+        "Vegie Central": {"prices": {"Small": 8.50, "Medium": 11.50, "Large": 14.50}, "stock": 50},
+        "Wild Mushroom": {"prices": {"Small": 8.50, "Medium": 11.50, "Large": 14.50}, "stock": 50}
+    },
+    "gourmet": {
+        "Hot Honey": {"prices": {"Small": 10.50, "Medium": 13.50, "Large": 16.50}, "stock": 50},
+        "Smoked BBQ Brisket": {"prices": {"Small": 10.50, "Medium": 13.50, "Large": 16.50}, "stock": 50},
+        "Buffalo Chicken": {"prices": {"Small": 10.50, "Medium": 13.50, "Large": 16.50}, "stock": 50},
+        "Spicy Meat Mess": {"prices": {"Small": 10.50, "Medium": 13.50, "Large": 16.50}, "stock": 50}
+    }
+}
