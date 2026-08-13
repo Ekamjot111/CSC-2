@@ -104,5 +104,33 @@
 
     <h4>Subtotal: ${{ '%.2f' % total }}</h4>
 
+<fieldset style="margin-top: 20px;"></fieldset>
+<legend>3. Delivery & Customer Detials</legend>
+<div style="margin-bottom: 15px;">
+    <input type="text" name="customer_name" id="customer_name" required placeholder="Ekamjot Singh">
+</div>
+<div style="margin-bottom: 15px;">
+            <label for="phone">Phone Number *:</label>
+            <input type="text" name="phone" id="phone" required placeholder="021 123 4567">
+        </div>
+<div style="margin-bottom: 15px;">
+            <label for="order_type">Fulfillment Method:</label>
+            <select name="order_type" id="order_type">
+                <option value="Delivery">Delivery (+$3.00 Fee)</option>
+                <option value="Pickup">Store Pickup</option>
+            </select>
+        </div>
+<div style="margin-bottom: 20px;">
+            <label for="address">Delivery Address (Required for Delivery):</label>
+            <input type="text" name="address" id="address" placeholder="123 Main Street, Auckland">
+        </div>
+    </fieldset>
+
+    <br>
+    <div>
+        <button type="submit" style="font-size: 1.1em; padding: 8px 16px;">Place Online Order</button>
+        <button type="submit" formaction="{{ url_for('cancel_order') }}" formnovalidate>Clear Cart</button>
+    </div>
+</form>
 
 {% endblock %}
