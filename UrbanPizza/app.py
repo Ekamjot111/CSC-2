@@ -1,22 +1,77 @@
-from flask import Flask, render_templete
+import json
+import datetime
+from flask import Flask, render_template, request, redirect, url_for, session, flash
 
-app = Flask(_name_)
+app = Flask(__name__)
+app.secret_key = 'urban_pizza_secret'
 
-@app.route("/")
-def home():
-    return render_templete('index.html')
 
-@app.route("/menu")
-def menu():
-    return render_templete('menu.html')
+# ---------------- DATA ----------------
+def load_data():
+    try:
+        with open('data/pizza.json') as file:
+            pizza = json.load(file)
+        with open('data/addons.json') as file:
+                    pizza = json.load(file)   
+        return pizzas, addons
+    except (FileNotFoundError json.JSONDecodeError) as e:
+          print(f"Error loading data: {e}")
+          return {}, {}
 
-@app.route("/order")
-def order():
-    return render_templete('order.html')
+# ------------ Calculate total ------------
+def calculate_total(cart, selected_addons, order_type):
 
-@app.route("/reciept")
-def menu():
-    return render_templete('reciept.html')
+      pizza_total = sum(
+            item['price'] * item['quantity']
+            for item in cart.values()
+      )
 
-if __name__ == "__main__":
-    app.run(debug=True)
+addon_total = sum(selected_addons.values())
+
+subtotal = pizza_total + addon_total
+
+delivery_fee = 3.00 if order_type == "Delivery" else 0.00
+
+total = subtotal + delivery_fee
+
+return subtotal, delivery_fee, total
+
+# -------- Find Pizza -------
+
+def find_pizza(pizza_name, pizzas):
+
+    for category in pizzas.values():
+
+        if pizza_name in category:
+            return category[pizza_name]
+
+    return None
+# ----- HOME / ORDER ------
+
+@app.route('/')
+def index():
+
+     pizzas, addons = load_data()
+     cart = session.get('cart', {})
+     selected_addons = session.get('selected_addons', {})
+
+     order_type = session.get('order_type', 'Pickup')
+
+     subtotal, delivery_fee, total = calculate_total(
+          cart, 
+          selected_addons, 
+          order_type
+     )
+
+     return render_template(
+          'index.html',
+          pizzas=pizzas,
+          addons=addons,
+          cart=cart,
+          selected_addons=selected_addons,
+          subtotal=subtotal,
+          delivery_fee=delivery_fee,
+          total=total
+     )
+
+# -------- Menu --------
