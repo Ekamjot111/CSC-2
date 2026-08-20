@@ -1,1 +1,22 @@
-[]
+[
+    {
+        "invoice_number": "UP-20260818093330",
+        "customer_name": "Manvir singh",
+        "phone": "01010101",
+        "order_type": "Delivery",
+        "address": "1, Tattu street, Auckland",
+        "items": {
+            "Classic Cheese (Medium)": {
+                "price": 11.5,
+                "quantity": 1
+            }
+        },
+        "addons": {
+            "Garlic Bread": 4.5
+        },
+        "subtotal": 16.0,
+        "delivery_fee": 3.0,
+        "total": 19.0,
+        "date": "2026-08-18 09:33"
+    }
+]
