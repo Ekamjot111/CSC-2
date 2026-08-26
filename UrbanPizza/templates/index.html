@@ -2,9 +2,9 @@
 {% block title %}Urban Pizza - Home{% endblock %}
 {% block content %}
 
-#---------- Big Pop Up Header ------------
+<!-- Section 1) Big Pop Up Header -->
 
-#--- Giving classes such as "hero", "order-button" for direct css editing ---
+<!-- Giving classes such as "hero", "order-button" for direct css editing -->
 <section class="hero">
     <div class="hero-text">
         <p class="small-heading">WELCOME TO URBAN PIZZA</p>
@@ -18,3 +18,59 @@
     </div>
 </section>
 
+<!-- Section 2) Popular pizzas section with 3 pizzas -->
+
+<!-- Giving each popular pizzas classes "pizza-cards" -->
+<section class="favourites">
+    <div class="section-heading">
+        <p class="small-heading">CUSTOMER FAVOURITES</p>
+        <h2>POPULAR PIZZAS</h2>
+    </div>
+    <div class="pizza-cards">
+        <div class="pizza-card">
+            <!-- Images --> 
+            <img src="{{ url_for('static', filename='images/pepperoni.jpg') }}" alt="Pepperoni Pizza">
+            <h3>Pepperoni</h3>
+            <p>A classic pizza topped with cheese and pepperoni.</p>
+            <a href="{{ url_for('order') }}">Order Now</a>
+        </div>
+        <div class="pizza-card">
+            <img src="{{ url_for('static', filename='images/margherita.jpg') }}" alt="Margherita Pizza">
+            <h3>Margherita</h3>
+            <p>Fresh tomato, cheese and delicious herbs.</p>
+            <a href="{{ url_for('order') }}">Order Now</a>
+        </div>
+        <div class="pizza-card">
+            <img src="{{ url_for('static', filename='images/paneer.jpg') }}" alt="Paneer Pizza">
+            <h3>BBQ Paneer</h3>
+            <p>Paneer with BBQ sauce and fresh toppings.</p>
+            <a href="{{ url_for('order') }}">Order Now</a>
+        </div>
+    </div>
+</section>
+
+<!-- Section 3) WHY statement with benefits and features of the platform/business-->
+ <section class="why-us">
+    <div class="section-heading">
+        <p class="small-heading">WHY CHOOSE US?</p>
+        <h2>MADE FOR PIZZA LOVERS</h2>
+    </div>
+    <div class="benefits">
+        <div class="benefit">
+            <div class="benefit-icon">🍕</div>
+            <h3>Fresh Ingredients</h3>
+            <p>Quality ingredients used to create every pizza.</p>
+        </div>
+        <div class="benefit">
+            <div class="benefit-icon">🚗</div>
+            <h3>Fast Delivery</h3>
+            <p>Choose delivery or pickup when placing your order.</p>
+        </div>
+        <div class="benefit">
+            <div class="benefit-icon">⭐</div>
+            <h3>Great Choice</h3>
+            <p>Choose from a range of pizzas, sizes and add-ons.</p>
+        </div>
+    </div>
+</section>
+{% endblock %}
