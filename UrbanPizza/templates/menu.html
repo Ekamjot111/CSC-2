@@ -1,82 +1,81 @@
 {% extends "base.html" %}
-
 {% block title %}Menu - Urban Pizza{% endblock %}
-
 {% block content %}
-<h2>Our Menu & Prices</h2>
-
-<h3>Vegetarian Pizzas</h3>
-<table border="1" cellpadding="8" cellspacing="0">
-    <thead>
-        <tr>
-            <th>Pizza</th>
-            <th>Small</th>
-            <th>Medium</th>
-            <th>Large</th>
-        </tr>
-    </thead>
-    <tbody>
-        {% for pizza, details in pizzas.vegetarian.items() %}
+<div style="padding: 40px 10%;">
+    <h2>Our Menu & Prices</h2>
+    <h3>Vegetarian Pizzas</h3>
+    <table>
+        <thead>
             <tr>
-                <td><strong>{{ pizza }}</strong></td>
-                <td>${{ '%.2f' % details.prices.Small }}</td>
-                <td>${{ '%.2f' % details.prices.Medium }}</td>
-                <td>${{ '%.2f' % details.prices.Large }}</td>
+                <th>Pizza</th>
+                <th>Small</th>
+                <th>Medium</th>
+                <th>Large</th>
             </tr>
-        {% endfor %}
-    </tbody>
-</table>
+        </thead>
+        <tbody>
+            {% for pizza, details in pizzas.vegetarian.items() %}
+                <tr>
+                    <td><strong>{{ pizza }}</strong></td>
+                    <td>${{ '%.2f' % details.prices.Small }}</td>
+                    <td>${{ '%.2f' % details.prices.Medium }}</td>
+                    <td>${{ '%.2f' % details.prices.Large }}</td>
+                </tr>
+            {% endfor %}
+        </tbody>
+    </table>
 
-<h3>Classic Pizzas</h3>
-<table border="1" cellpadding="8" cellspacing="0">
-    <thead>
-        <tr>
-            <th>Pizza</th>
-            <th>Small</th>
-            <th>Medium</th>
-            <th>Large</th>
-        </tr>
-    </thead>
-    <tbody>
-        {% for pizza, details in pizzas.classic.items() %}
+    <h3>Classic Pizzas</h3>
+    <table>
+        <thead>
             <tr>
-                <td><strong>{{ pizza }}</strong></td>
-                <td>${{ '%.2f' % details.prices.Small }}</td>
-                <td>${{ '%.2f' % details.prices.Medium }}</td>
-                <td>${{ '%.2f' % details.prices.Large }}</td>
+                <th>Pizza</th>
+                <th>Small</th>
+                <th>Medium</th>
+                <th>Large</th>
             </tr>
-        {% endfor %}
-    </tbody>
-</table>
+        </thead>
+        <tbody>
+            {% for pizza, details in pizzas.classic.items() %}
+                <tr>
+                    <td><strong>{{ pizza }}</strong></td>
+                    <td>${{ '%.2f' % details.prices.Small }}</td>
+                    <td>${{ '%.2f' % details.prices.Medium }}</td>
+                    <td>${{ '%.2f' % details.prices.Large }}</td>
+                </tr>
+            {% endfor %}
+        </tbody>
+    </table>
 
-<h3>Gourmet Pizzas</h3>
-<table border="1" cellpadding="8" cellspacing="0">
-    <thead>
-        <tr>
-            <th>Pizza</th>
-            <th>Small</th>
-            <th>Medium</th>
-            <th>Large</th>
-        </tr>
-    </thead>
-    <tbody>
-        {% for pizza, details in pizzas.gourmet.items() %}
+    <h3>Gourmet Pizzas</h3>
+    <table>
+        <thead>
             <tr>
-                <td><strong>{{ pizza }}</strong></td>
-                <td>${{ '%.2f' % details.prices.Small }}</td>
-                <td>${{ '%.2f' % details.prices.Medium }}</td>
-                <td>${{ '%.2f' % details.prices.Large }}</td>
+                <th>Pizza</th>
+                <th>Small</th>
+                <th>Medium</th>
+                <th>Large</th>
             </tr>
+        </thead>
+        <tbody>
+            {% for pizza, details in pizzas.gourmet.items() %}
+                <tr>
+                    <td><strong>{{ pizza }}</strong></td>
+                    <td>${{ '%.2f' % details.prices.Small }}</td>
+                    <td>${{ '%.2f' % details.prices.Medium }}</td>
+                    <td>${{ '%.2f' % details.prices.Large }}</td>
+                </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+
+    <h3>Sides & Beverages</h3>
+    <ul>
+        {% for addon, details in addons.items() %}
+            <li><strong>{{ addon }}</strong> - ${{ '%.2f' % details.price }}</li>
         {% endfor %}
-    </tbody>
-</table>
-
-<h3>Sides & Beverages</h3>
-<ul>
-    {% for addon, details in addons.items() %}
-        <li><strong>{{ addon }}</strong> - ${{ '%.2f' % details.price }}</li>
-    {% endfor %}
-</ul>
-
-<p><a href="{{ url_for('index') }}">Back to Ordering</a></p>
+    </ul>
+    <br>
+    <p><a href="{{ url_for('order') }}">Back to Ordering</a></p>
+</div>
 {% endblock %}
