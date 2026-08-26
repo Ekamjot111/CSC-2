@@ -1,122 +1,20 @@
 {% extends "base.html" %}
-
-{% block title %}Online Order - Urban Pizza{% endblock %}
-
+{% block title %}Urban Pizza - Home{% endblock %}
 {% block content %}
-<h2>Place Your Order</h2>
 
-{% with messages = get_flashed_messages() %}
-    {% if messages %}
-        <div class="flash-messages">
-            {% for message in messages %}
-                <p>{{ message }}</p>
-            {% endfor %}
-        </div>
-    {% endif %}
-{% endwith %}
+#---------- Big Pop Up Header ------------
 
-<form action="{{ url_for('add_to_cart') }}" method="post">
-    <fieldset>
-        <legend>1. Choose Your Pizza</legend>
-        <label for="pizza">Pizza:</label>
-        <select name="pizza" id="pizza" required>
-            <optgroup label="Vegetarian">
-                {% for pizza, details in pizzas.vegetarian.items() %}
-                    <option value="{{ pizza }}">{{ pizza }} (S: ${{ '%.2f' % details.prices.Small }} | M: ${{ '%.2f' % details.prices.Medium }} | L: ${{ '%.2f' % details.prices.Large }})</option>
-                {% endfor %}
-            </optgroup>
-            <optgroup label="Classic">
-                {% for pizza, details in pizzas.classic.items() %}
-                    <option value="{{ pizza }}">{{ pizza }} (S: ${{ '%.2f' % details.prices.Small }} | M: ${{ '%.2f' % details.prices.Medium }} | L: ${{ '%.2f' % details.prices.Large }})</option>
-                {% endfor %}
-            </optgroup>
-            <optgroup label="Gourmet">
-                {% for pizza, details in pizzas.gourmet.items() %}
-                    <option value="{{ pizza }}">{{ pizza }} (S: ${{ '%.2f' % details.prices.Small }} | M: ${{ '%.2f' % details.prices.Medium }} | L: ${{ '%.2f' % details.prices.Large }})</option>
-                {% endfor %}
-            </optgroup>
-        </select>
+#--- Giving classes such as "hero", "order-button" for direct css editing ---
+<section class="hero">
+    <div class="hero-text">
+        <p class="small-heading">WELCOME TO URBAN PIZZA</p>
+        <h1>FRESH. HOT.<br>DELICIOUS.</h1>
+        <p>Delicious pizzas made your way. Choose from our range of classic, vegetarian and gourmet pizzas.</p>
+        <a href="{{ url_for('order') }}" class="order-button">ORDER NOW</a>
+        <a href="{{ url_for('menu') }}" class="menu-button">VIEW MENU</a>
+    </div>
+    <div class="hero-image">
+        <img src="{{ url_for('static', filename='images/hero-pizza.jpg') }}" alt="Fresh Urban Pizza">
+    </div>
+</section>
 
-        <label for="size">Size:</label>
-        <select name="size" id="size">
-            <option value="Small">Small</option>
-            <option value="Medium" selected>Medium</option>
-            <option value="Large">Large</option>
-        </select>
-
-        <label for="quantity">Quantity:</label>
-        <input type="number" name="quantity" id="quantity" value="1" min="1" max="5" required>
-        <button type="submit">Add to Cart</button>
-    </fieldset>
-</form>
-
-<form action="{{ url_for('select_addon') }}" method="post">
-    <fieldset>
-        <legend>2. Choose Drinks & Sides</legend>
-        {% for addon, data in addons.items() %}
-            <label>
-                <input type="checkbox" name="addons" value="{{ addon }}">
-                {{ addon }} (+${{ '%.2f' % data.price }})
-            </label><br>
-        {% endfor %}
-    </fieldset>
-    <button type="submit">Update Extras</button>
-</form>
-
-<h2>Your Cart</h2>
-
-{% if cart %}
-    <h3>Pizzas</h3>
-    <ul>
-        {% for item, details in cart.items() %}
-            <li>
-                <strong>{{ item }}</strong> - {{ details['quantity'] }} x ${{ '%.2f' % details['price'] }} = ${{ '%.2f' % (details['quantity'] * details['price']) }}
-                <a href="{{ url_for('remove_from_cart', item=item) }}">[Remove]</a>
-            </li>
-        {% endfor %}
-    </ul>
-{% else %}
-    <p>Your cart is currently empty.</p>
-{% endif %}
-
-{% if selected_addons %}
-    <h3>Drinks & Sides</h3>
-    <ul>
-        {% for addon, price in selected_addons.items() %}
-            <li>{{ addon }} - ${{ '%.2f' % price }}</li>
-        {% endfor %}
-    </ul>
-{% endif %}
-
-<form action="{{ url_for('checkout') }}" method="post">
-    <h4>Subtotal: ${{ '%.2f' % subtotal }}</h4>
-    <fieldset>
-        <legend>3. Delivery & Customer Details</legend>
-        <div>
-            <label for="customer_name">Customer Name:</label>
-            <input type="text" name="customer_name" id="customer_name" required placeholder="Ekamjot Singh">
-        </div>
-        <div>
-            <label for="phone">Phone Number:</label>
-            <input type="tel" name="phone" id="phone" required placeholder="021 123 4567">
-        </div>
-        <div>
-            <label for="order_type">Fulfillment Method:</label>
-            <select name="order_type" id="order_type">
-                <option value="Delivery">Delivery (+$3.00 Fee)</option>
-                <option value="Pickup">Store Pickup</option>
-            </select>
-        </div>
-        <div>
-            <label for="address">Delivery Address:</label>
-            <input type="text" name="address" id="address" placeholder="123 Main Street, Auckland">
-        </div>
-    </fieldset>
-
-    <h4>Delivery Fee: ${{ '%.2f' % delivery_fee }}</h4>
-    <h3>Total: ${{ '%.2f' % total }}</h3>
-
-    <button type="submit">Place Online Order</button>
-    <button type="submit" formaction="{{ url_for('cancel_order') }}" formnovalidate>Clear Cart</button>
-</form>
-{% endblock %}
