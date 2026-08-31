@@ -1,0 +1,48 @@
+/* Reset default spacing and make sizing easier to control */
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+/* Main website styling */
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f8f5f0;
+    color: #242424;
+    line-height: 1.6;
+}
+
+/* Navigation header */
+header {
+    background-color: #202020;
+    padding: 18px 7%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+/* Urban Pizza logo */
+.logo {
+    color: white;
+    text-decoration: none;
+    font-size: 25px;
+    font-weight: bold;
+    letter-spacing: 1px;
+}
+
+/* Navigation links */
+nav {
+    display: flex;
+    gap: 28px;
+}
+
+nav a {
+    color: white;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+nav a:hover {
+    color: #e6392f;
+}
