@@ -1,4 +1,6 @@
-/* Reset default spacing and make sizing easier to control */
+/* =====GENERAL STYLING=====*/
+
+/* Remove default spacing and make element sizing easier */
 * {
     box-sizing: border-box;
     margin: 0;
@@ -12,6 +14,14 @@ body {
     color: #242424;
     line-height: 1.6;
 }
+
+/* Main content area */
+main {
+    min-height: 80vh;
+}
+
+
+/* =============HEADER AND NAVIGATION========= */
 
 /* Navigation header */
 header {
@@ -43,6 +53,389 @@ nav a {
     font-weight: bold;
 }
 
+/* Change navigation colour when hovered */
 nav a:hover {
     color: #e6392f;
+}
+
+
+/* ======HOMEPAGE HERO===== */
+
+/* Main hero section */
+.hero {
+    min-height: 600px;
+    background-color: #f8f5f0;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 60px 10%;
+    gap: 50px;
+}
+
+/* Hero text area */
+.hero-div {
+    width: 50%;
+}
+
+/* Small heading above main title */
+.small-heading {
+    color: #c62828;
+    font-size: 14px;
+    font-weight: bold;
+    letter-spacing: 2px;
+    margin-bottom: 10px;
+}
+
+/* Main hero heading */
+.hero h1 {
+    font-size: 65px;
+    line-height: 1.05;
+    margin-bottom: 20px;
+    color: #202020;
+}
+
+/* Hero paragraphs */
+.hero-div p {
+    font-size: 18px;
+    max-width: 500px;
+    margin-bottom: 30px;
+}
+
+/* Hero image area */
+.hero-image {
+    width: 50%;
+}
+
+/* Hero pizza image */
+.hero-image img {
+    width: 100%;
+    height: 420px;
+    object-fit: cover;
+    border-radius: 15px;
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15);
+}
+
+
+/* =======HOMEPAGE BUTTONS=======*/
+
+/* Shared button styling */
+.order-button,
+.menu-button {
+    display: inline-block;
+    padding: 13px 25px;
+    text-decoration: none;
+    font-weight: bold;
+    border-radius: 5px;
+    margin-right: 10px;
+}
+
+/* Order button */
+.order-button {
+    background-color: #c62828;
+    color: white;
+}
+
+/* Order button hover effect */
+.order-button:hover {
+    background-color: #a51f1f;
+}
+
+/* Menu button */
+.menu-button {
+    border: 2px solid #202020;
+    color: #202020;
+}
+
+/* Menu button hover effect */
+.menu-button:hover {
+    background-color: #202020;
+    color: white;
+}
+
+
+/* =====CUSTOMER FAVOURITES==== */
+
+/* Sections on the homepage */
+.favourites,
+.why-us {
+    padding: 70px 10%;
+}
+
+/* Favourites section background */
+.favourites {
+    background-color: white;
+}
+
+/* Section headings */
+.section-heading {
+    text-align: center;
+    margin-bottom: 40px;
+}
+
+/* Section title */
+.section-heading h2 {
+    font-size: 34px;
+    color: #202020;
+}
+
+/* Display pizza cards in a grid */
+.pizza-cards {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 25px;
+}
+
+/* Individual pizza card */
+.pizza-card {
+    background-color: #f8f5f0;
+    border-radius: 10px;
+    overflow: hidden;
+    text-align: center;
+    padding-bottom: 25px;
+    transition: transform 0.2s;
+}
+
+/* Move card slightly when hovered */
+.pizza-card:hover {
+    transform: translateY(-8px);
+}
+
+/* Pizza card image */
+.pizza-card img {
+    width: 100%;
+    height: 220px;
+    object-fit: cover;
+}
+
+/* Pizza card title */
+.pizza-card h3 {
+    font-size: 22px;
+    margin: 18px 15px 8px;
+}
+
+/* Pizza card description */
+.pizza-card p {
+    padding: 0 20px;
+    margin-bottom: 20px;
+    color: #555;
+}
+
+/* Pizza card order button */
+.pizza-card a {
+    display: inline-block;
+    background-color: #c62828;
+    color: white;
+    text-decoration: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    font-weight: bold;
+}
+
+
+/* ======WHY CHOOSE US=====*/
+
+/* Why choose us section */
+.why-us {
+    background-color: #202020;
+    color: white;
+}
+
+/* Why choose us heading */
+.why-us .section-heading h2 {
+    color: white;
+}
+
+/* Benefits grid */
+.benefits {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 30px;
+    text-align: center;
+}
+
+/* Individual benefit */
+.benefit {
+    padding: 20px;
+}
+
+/* Benefit icon */
+.benefit-icon {
+    font-size: 45px;
+    margin-bottom: 10px;
+}
+
+/* Benefit title */
+.benefit h3 {
+    font-size: 21px;
+    margin-bottom: 10px;
+}
+
+
+/* =====FORMS AND ORDERING===== */
+
+/* Form sections */
+fieldset {
+    background-color: white;
+    border: 1px solid #ddd;
+    border-radius: 10px;
+    padding: 20px;
+    margin-bottom: 20px;
+}
+
+/* Form section headings */
+legend {
+    color: #c62828;
+    font-weight: bold;
+    font-size: 18px;
+    padding: 0 8px;
+}
+
+/* Form labels */
+label {
+    display: inline-block;
+    margin: 8px 10px 8px 0;
+    font-weight: bold;
+}
+
+/* Input and selection boxes */
+select,
+input[type="text"],
+input[type="tel"],
+input[type="number"] {
+    padding: 10px;
+    border: 1px solid #bbb;
+    border-radius: 5px;
+    margin: 5px 10px 5px 0;
+}
+
+/* Buttons */
+button {
+    background-color: #c62828;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    padding: 11px 18px;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+/* Button hover effect */
+button:hover {
+    background-color: #a51f1f;
+}
+
+
+/* ==== MESSAGES =====*/
+
+/* Messages shown after user actions */
+.flash-messages {
+    background-color: #d4edda;
+    color: #155724;
+    padding: 12px;
+    border-radius: 5px;
+    margin-bottom: 20px;
+}
+
+
+/* =====TABLES====== */
+
+/* Menu and order history tables */
+table {
+    width: 100%;
+    background-color: white;
+    border-collapse: collapse;
+    margin-bottom: 25px;
+}
+
+/* Table headings */
+th {
+    background-color: #c62828;
+    color: white;
+    text-align: left;
+}
+
+/* Table cells */
+th,
+td {
+    padding: 12px;
+    border: 1px solid #ddd;
+}
+
+/* Alternating table rows */
+tr:nth-child(even) {
+    background-color: #f2f2f2;
+}
+
+
+
+   /* ====FOOTER===== */
+
+
+/* Website footer */
+footer {
+    background-color: #111;
+    color: white;
+    text-align: center;
+    padding: 25px;
+}
+
+
+/* =========================
+   RESPONSIVE DESIGN
+   ========================= */
+
+/* Adjust website for smaller screens */
+@media (max-width: 800px) {
+
+    /* Stack header items */
+    header {
+        flex-direction: column;
+        gap: 15px;
+    }
+
+    /* Allow navigation links to wrap */
+    nav {
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: 15px;
+    }
+
+    /* Stack hero content */
+    .hero {
+        flex-direction: column;
+        text-align: center;
+        padding: 50px 8%;
+    }
+
+    /* Make hero text and image full width */
+    .hero-div,
+    .hero-image {
+        width: 100%;
+    }
+
+    /* Smaller hero heading */
+    .hero h1 {
+        font-size: 48px;
+    }
+
+    /* Centre hero paragraph */
+    .hero-div p {
+        margin-left: auto;
+        margin-right: auto;
+    }
+
+    /* Stack pizza cards and benefits */
+    .pizza-cards,
+    .benefits {
+        grid-template-columns: 1fr;
+    }
+
+    /* Make form inputs full width */
+    select,
+    input[type="text"],
+    input[type="tel"],
+    input[type="number"] {
+        width: 100%;
+        margin-right: 0;
+    }
 }
