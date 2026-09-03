@@ -361,14 +361,8 @@ td {
     border: 1px solid #ddd;
 }
 
-/* Alternating table rows */
-tr:nth-child(even) {
-    background-color: #f2f2f2;
-}
 
-
-
-   /* ====FOOTER===== */
+/* ====FOOTER===== */
 
 
 /* Website footer */
