@@ -1,81 +1,100 @@
 {% extends "base.html" %}
+
 {% block title %}Menu - Urban Pizza{% endblock %}
+
 {% block content %}
-<div style="padding: 40px 10%;">
-    <h2>Our Menu & Prices</h2>
-    <h3>Vegetarian Pizzas</h3>
-    <table>
-        <thead>
-            <tr>
-                <th>Pizza</th>
-                <th>Small</th>
-                <th>Medium</th>
-                <th>Large</th>
-            </tr>
-        </thead>
-        <tbody>
-            {% for pizza, details in pizzas.vegetarian.items() %}
-                <tr>
-                    <td><strong>{{ pizza }}</strong></td>
-                    <td>${{ '%.2f' % details.prices.Small }}</td>
-                    <td>${{ '%.2f' % details.prices.Medium }}</td>
-                    <td>${{ '%.2f' % details.prices.Large }}</td>
-                </tr>
-            {% endfor %}
-        </tbody>
-    </table>
 
-    <h3>Classic Pizzas</h3>
-    <table>
-        <thead>
-            <tr>
-                <th>Pizza</th>
-                <th>Small</th>
-                <th>Medium</th>
-                <th>Large</th>
-            </tr>
-        </thead>
-        <tbody>
-            {% for pizza, details in pizzas.classic.items() %}
-                <tr>
-                    <td><strong>{{ pizza }}</strong></td>
-                    <td>${{ '%.2f' % details.prices.Small }}</td>
-                    <td>${{ '%.2f' % details.prices.Medium }}</td>
-                    <td>${{ '%.2f' % details.prices.Large }}</td>
-                </tr>
-            {% endfor %}
-        </tbody>
-    </table>
+<section class="menu-page">
+    <div class="section-heading">
+        <p class="small-heading">OUR MENU</p>
+        <h2>CHOOSE YOUR PIZZA</h2>
+        <p>Choose from our range of vegetarian, classic and gourmet pizzas.</p>
+    </div>
 
-    <h3>Gourmet Pizzas</h3>
-    <table>
-        <thead>
-            <tr>
-                <th>Pizza</th>
-                <th>Small</th>
-                <th>Medium</th>
-                <th>Large</th>
-            </tr>
-        </thead>
-        <tbody>
-            {% for pizza, details in pizzas.gourmet.items() %}
-                <tr>
-                    <td><strong>{{ pizza }}</strong></td>
-                    <td>${{ '%.2f' % details.prices.Small }}</td>
-                    <td>${{ '%.2f' % details.prices.Medium }}</td>
-                    <td>${{ '%.2f' % details.prices.Large }}</td>
-                </tr>
-            {% endfor %}
-        </tbody>
-    </table>
-
-    <h3>Sides & Beverages</h3>
-    <ul>
-        {% for addon, details in addons.items() %}
-            <li><strong>{{ addon }}</strong> - ${{ '%.2f' % details.price }}</li>
+    <!-- Vegetarian Pizzas -->
+    <h3 class="menu-category">Vegetarian Pizzas</h3>
+    <div class="menu-cards">
+        {% for pizza, details in pizzas.vegetarian.items() %}
+        <div class="menu-card">
+            <img src=""
+                 alt="{{ pizza }} Pizza">
+            <div class="menu-card-content">
+                <h3>{{ pizza }}</h3>
+                <p>
+                    Small: ${{ '%.2f' % details.prices.Small }} |
+                    Medium: ${{ '%.2f' % details.prices.Medium }} |
+                    Large: ${{ '%.2f' % details.prices.Large }}
+                </p>
+                <a href="{{ url_for('order') }}" class="order-button">
+                    Order Now
+                </a>
+            </div>
+        </div>
         {% endfor %}
-    </ul>
-    <br>
-    <p><a href="{{ url_for('order') }}">Back to Ordering</a></p>
-</div>
+
+    </div>
+
+
+    <!-- Classic Pizzas -->
+    <h3 class="menu-category">Classic Pizzas</h3>
+    <div class="menu-cards">
+        {% for pizza, details in pizzas.classic.items() %}
+        <div class="menu-card">
+            <img src=""
+                 alt="{{ pizza }} Pizza">
+            <div class="menu-card-content">
+                <h3>{{ pizza }}</h3>
+                <p>
+                    Small: ${{ '%.2f' % details.prices.Small }} |
+                    Medium: ${{ '%.2f' % details.prices.Medium }} |
+                    Large: ${{ '%.2f' % details.prices.Large }}
+                </p>
+                <a href="{{ url_for('order') }}" class="order-button">
+                    Order Now
+                </a>
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+
+    <!-- Gourmet Pizzas -->
+    <h3 class="menu-category">Gourmet Pizzas</h3>
+    <div class="menu-cards">
+        {% for pizza, details in pizzas.gourmet.items() %}
+        <div class="menu-card">
+            <img src=""
+                 alt="{{ pizza }} Pizza">
+            <div class="menu-card-content">
+                <h3>{{ pizza }}</h3>
+                <p>
+                    Small: ${{ '%.2f' % details.prices.Small }} |
+                    Medium: ${{ '%.2f' % details.prices.Medium }} |
+                    Large: ${{ '%.2f' % details.prices.Large }}
+                </p>
+                <a href="{{ url_for('order') }}" class="order-button">
+                    Order Now
+                </a>
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+
+    <!-- Drinks and Sides -->
+    <h3 class="menu-category">Drinks & Sides</h3>
+    <div class="menu-cards">
+        {% for addon, details in addons.items() %}
+        <div class="menu-card">
+            <img src=""
+                 alt="{{ addon }}">
+            <div class="menu-card-content">
+                <h3>{{ addon }}</h3>
+                <p>${{ '%.2f' % details.price }}</p>
+                <a href="{{ url_for('order') }}" class="order-button">
+                    Order Now
+                </a>
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+</section>
 {% endblock %}
