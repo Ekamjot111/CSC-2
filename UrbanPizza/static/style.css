@@ -373,10 +373,70 @@ footer {
     padding: 25px;
 }
 
+/* ==MENU PAGE== */
+/* Menu page spacing */
+.menu-page {
+    padding: 60px 10%;
+}
 
-/* =========================
-   RESPONSIVE DESIGN
-   ========================= */
+/* Menu category headings */
+.menu-category {
+    font-size: 28px;
+    margin: 45px 0 20px;
+    color: #202020;
+}
+
+/* Menu cards displayed in a grid */
+.menu-cards {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 25px;
+}
+
+/* Individual menu card */
+.menu-card {
+    background-color: white;
+    border-radius: 10px;
+    overflow: hidden;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    transition: transform 0.2s;
+}
+
+/* Move menu card slightly when hovered (moves it a little up) */
+.menu-card:hover {
+    transform: translateY(-5px);
+}
+
+/* Menu card image */
+.menu-card img {
+    width: 100%;
+    height: 220px;
+    object-fit: cover;
+}
+
+/* Content inside menu card */
+.menu-card-content {
+    padding: 20px;
+}
+
+/* Menu card title */
+.menu-card-content h3 {
+    font-size: 22px;
+    margin-bottom: 8px;
+}
+
+/* Menu card price */
+.menu-card-content p {
+    color: #555;
+    margin-bottom: 18px;
+}
+
+/* Menu card button */
+.menu-card-content .order-button {
+    margin-right: 0;
+}
+
+/* ===== RESPONSIVE DESIGN (@media)===== */
 
 /* Adjust website for smaller screens */
 @media (max-width: 800px) {
@@ -432,4 +492,7 @@ footer {
         width: 100%;
         margin-right: 0;
     }
+    .menu-cards {
+    grid-template-columns: 1fr;
+}
 }
