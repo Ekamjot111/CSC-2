@@ -4,43 +4,41 @@
 
 {% block content %}
 
+<!-- Connected each pizza name to its image filename.
+    which match the pizza names in pizzas.json.-->
+{% set image_map = {
+    "New York Style Pepperoni": "NewYorkStylePepperoni.png",
+    "Downtown Hawaiian": "DowntownHawaiian.png",
+    "Meatlovers": "Meatlovers.png",
+    "BBQ Chicken": "BBQChicken.png",
+    "Classic Cheese": "ClassicCheese.png",
+    "Cheesy Garlic": "CheesyGarlic.png",
+    "Veggie Central": "VeggieCentral.png",
+    "Wild Mushroom": "WildMushroom.png",
+    "Hot Honey": "HotHoney.png",
+    "Smoked BBQ Brisket": "SmokedBBQBrisket.png",
+    "Buffalo Chicken": "BuffaloChicken.png",
+    "Spicy Meat Mess": "SpicyMeatMess.png"
+} %}
+<!-- Main menu section -->
 <section class="menu-page">
+    <!-- Menu heading -->
     <div class="section-heading">
         <p class="small-heading">OUR MENU</p>
         <h2>CHOOSE YOUR PIZZA</h2>
-        <p>Choose from our range of vegetarian, classic and gourmet pizzas.</p>
+        <p>
+            Choose from our range of vegetarian, classic and gourmet pizzas.
+        </p>
     </div>
 
-    <!-- Vegetarian Pizzas -->
-    <h3 class="menu-category">Vegetarian Pizzas</h3>
-    <div class="menu-cards">
-        {% for pizza, details in pizzas.vegetarian.items() %}
-        <div class="menu-card">
-            <img src=""
-                 alt="{{ pizza }} Pizza">
-            <div class="menu-card-content">
-                <h3>{{ pizza }}</h3>
-                <p>
-                    Small: ${{ '%.2f' % details.prices.Small }} |
-                    Medium: ${{ '%.2f' % details.prices.Medium }} |
-                    Large: ${{ '%.2f' % details.prices.Large }}
-                </p>
-                <a href="{{ url_for('order') }}" class="order-button">
-                    Order Now
-                </a>
-            </div>
-        </div>
-        {% endfor %}
-
-    </div>
-
-
-    <!-- Classic Pizzas -->
+    <!-- ======CLASSIC PIZZAS====== -->
     <h3 class="menu-category">Classic Pizzas</h3>
     <div class="menu-cards">
+        <!-- Go through each classic pizza from pizzas.json -->
         {% for pizza, details in pizzas.classic.items() %}
         <div class="menu-card">
-            <img src=""
+            <!-- Display the matching pizza image -->
+            <img src="{{ url_for('static', filename='images/' + image_map[pizza]) }}"
                  alt="{{ pizza }} Pizza">
             <div class="menu-card-content">
                 <h3>{{ pizza }}</h3>
@@ -49,6 +47,7 @@
                     Medium: ${{ '%.2f' % details.prices.Medium }} |
                     Large: ${{ '%.2f' % details.prices.Large }}
                 </p>
+                <!-- Send user to the order page -->
                 <a href="{{ url_for('order') }}" class="order-button">
                     Order Now
                 </a>
@@ -57,12 +56,39 @@
         {% endfor %}
     </div>
 
-    <!-- Gourmet Pizzas -->
+    <!-- ====VEGETARIAN PIZZAS==== -->
+    <h3 class="menu-category">Vegetarian Pizzas</h3>
+    <div class="menu-cards">
+        <!-- Go through each vegetarian pizza from pizzas.json -->
+        {% for pizza, details in pizzas.vegetarian.items() %}
+        <div class="menu-card">
+            <!-- Display the matching pizza image -->
+            <img src="{{ url_for('static', filename='images/' + image_map[pizza]) }}"
+                 alt="{{ pizza }} Pizza">
+            <div class="menu-card-content">
+                <h3>{{ pizza }}</h3>
+                <p>
+                    Small: ${{ '%.2f' % details.prices.Small }} |
+                    Medium: ${{ '%.2f' % details.prices.Medium }} |
+                    Large: ${{ '%.2f' % details.prices.Large }}
+                </p>
+                <!-- Send user to the order page -->
+                <a href="{{ url_for('order') }}" class="order-button">
+                    Order Now
+                </a>
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+
+    <!-- ======GOURMET PIZZAS====== -->
     <h3 class="menu-category">Gourmet Pizzas</h3>
     <div class="menu-cards">
+       <!-- Go through each gourmet pizza from pizzas.json -->
         {% for pizza, details in pizzas.gourmet.items() %}
         <div class="menu-card">
-            <img src=""
+            <!-- Display the matching pizza image -->
+            <img src="{{ url_for('static', filename='images/' + image_map[pizza]) }}"
                  alt="{{ pizza }} Pizza">
             <div class="menu-card-content">
                 <h3>{{ pizza }}</h3>
@@ -71,6 +97,7 @@
                     Medium: ${{ '%.2f' % details.prices.Medium }} |
                     Large: ${{ '%.2f' % details.prices.Large }}
                 </p>
+                <!-- Send user to the order page -->
                 <a href="{{ url_for('order') }}" class="order-button">
                     Order Now
                 </a>
@@ -79,16 +106,20 @@
         {% endfor %}
     </div>
 
-    <!-- Drinks and Sides -->
+    <!-- ======DRINKS AND SIDES====== -->
     <h3 class="menu-category">Drinks & Sides</h3>
     <div class="menu-cards">
+        <!-- Go through each add-on from addons.json -->
         {% for addon, details in addons.items() %}
         <div class="menu-card">
             <img src=""
                  alt="{{ addon }}">
             <div class="menu-card-content">
                 <h3>{{ addon }}</h3>
-                <p>${{ '%.2f' % details.price }}</p>
+                <p>
+                    ${{ '%.2f' % details.price }}
+                </p>
+                <!-- Send user to the order page -->
                 <a href="{{ url_for('order') }}" class="order-button">
                     Order Now
                 </a>

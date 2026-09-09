@@ -8,7 +8,7 @@
     "vegetarian": {
         "Classic Cheese": {"prices": {"Small": 8.50, "Medium": 11.50, "Large": 14.50}, "stock": 50},
         "Cheesy Garlic": {"prices": {"Small": 8.50, "Medium": 11.50, "Large": 14.50}, "stock": 50},
-        "Vegie Central": {"prices": {"Small": 8.50, "Medium": 11.50, "Large": 14.50}, "stock": 50},
+        "Veggie Central": {"prices": {"Small": 8.50, "Medium": 11.50, "Large": 14.50}, "stock": 50},
         "Wild Mushroom": {"prices": {"Small": 8.50, "Medium": 11.50, "Large": 14.50}, "stock": 50}
     },
     "gourmet": {
