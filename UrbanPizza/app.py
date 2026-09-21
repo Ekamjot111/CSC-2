@@ -119,7 +119,7 @@ def add_to_cart():
         }
     session['cart'] = cart
     session.modified = True
-    flash(item_name + ' added to your cart.')
+    flash(f"Added {quantity} x {pizza_name} ({size}) to your cart.")
     return redirect(url_for('order'))
 
 # ---------- SELECT ADD-ONS ----------
