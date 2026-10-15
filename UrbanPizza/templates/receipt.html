@@ -1,0 +1,64 @@
+
+{% extends "base.html" %}
+{% block title %}Order Receipt - Urban Pizza{% endblock %}
+
+{% block content %}
+<div class="receipt-container">
+
+    <h2>Order Confirmed!</h2>
+    <p>Thank you for ordering from Urban Pizza.</p>
+
+    <div class="receipt-box">
+        <h3>Order Details</h3>
+
+        <p><strong>Invoice Number:</strong> {{ order['invoice_number'] }}</p>
+        <p><strong>Date:</strong> {{ order['date'] }}</p>
+        <p><strong>Customer:</strong> {{ order['customer_name'] }}</p>
+        <p><strong>Phone:</strong> {{ order['phone'] }}</p>
+        <p><strong>Order Type:</strong> {{ order['order_type'] }}</p>
+
+        {% if order['order_type'] == 'Delivery' %}
+            <p><strong>Delivery Address:</strong> {{ order['address'] }}</p>
+        {% endif %}
+
+        <hr>
+
+        <h3>Your Pizzas</h3>
+
+        {% for item, details in order['items'].items() %}
+            <p>
+                <strong>{{ item }}</strong> —
+                {{ details['quantity'] }} x
+                ${{ '%.2f' | format(details['price']) }}
+                = ${{ '%.2f' | format(details['price'] * details['quantity']) }}
+            </p>
+        {% endfor %}
+
+        {% if order['addons'] %}
+            <h3>Drinks &amp; Sides</h3>
+
+            {% for addon, price in order['addons'].items() %}
+                <p>
+                    {{ addon }} — ${{ '%.2f' | format(price) }}
+                </p>
+            {% endfor %}
+        {% endif %}
+
+        <hr>
+
+        <p>Subtotal: ${{ '%.2f' | format(order['subtotal']) }}</p>
+        <p>Delivery Fee: ${{ '%.2f' | format(order['delivery_fee']) }}</p>
+
+        <h2>Total: ${{ '%.2f' | format(order['total']) }}</h2>
+    </div>
+
+    <a href="{{ url_for('index') }}" class="order-button">
+        Back to Home
+    </a>
+
+    <a href="{{ url_for('menu') }}" class="menu-button">
+        View Menu
+    </a>
+
+</div>
+{% endblock %}

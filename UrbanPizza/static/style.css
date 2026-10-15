@@ -436,6 +436,71 @@ footer {
     margin-right: 0;
 }
 
+/* Receipt features */
+.receipt-container {
+    max-width: 750px;
+    margin: 40px auto;
+    padding: 20px;
+    text-align: center;
+}
+
+.receipt-box {
+    background-color: white;
+    padding: 30px;
+    margin: 25px 0;
+    border: 1px solid #ddd;
+    border-radius: 10px;
+    text-align: left;
+}
+
+.receipt-box h3 {
+    margin: 15px 0;
+    color: #c62828;
+}
+
+.receipt-box p {
+    margin: 8px 0;
+}
+
+.receipt-box hr {
+    margin: 20px 0;
+    border: 0;
+    border-top: 1px solid #ddd;
+}
+
+
+
+.receipt-container {
+    max-width: 750px;
+    margin: 40px auto;
+    padding: 20px;
+    text-align: center;
+}
+
+.receipt-box {
+    background-color: white;
+    padding: 30px;
+    margin: 25px 0;
+    border: 1px solid #ddd;
+    border-radius: 10px;
+    text-align: left;
+}
+
+.receipt-box h3 {
+    margin: 15px 0;
+    color: #c62828;
+}
+
+.receipt-box p {
+    margin: 8px 0;
+}
+
+.receipt-box hr {
+    margin: 20px 0;
+    border: 0;
+    border-top: 1px solid #ddd;
+}
+
 /* ===== RESPONSIVE DESIGN (@media)===== */
 
 /* Adjust website for smaller screens */
