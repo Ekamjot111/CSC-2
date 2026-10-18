@@ -1,0 +1,78 @@
+
+{% extends "base.html" %}
+{% block title %}My Orders - Urban Pizza{% endblock %}
+
+{% block content %}
+<!-- Main container for the order history page -->
+<div class="history-container" style="padding: 40px 10%;">
+    <h2>My Order History</h2>
+    <p>View your previous Urban Pizza orders below.</p>
+
+    <!-- Display any messages sent from the Flask app -->
+    {% with messages = get_flashed_messages() %}
+        {% if messages %}
+            <div class="flash-messages">
+                <!-- Loop through and display each message -->
+                {% for message in messages %}
+                    <p>{{ message }}</p>
+                {% endfor %}
+            </div>
+        {% endif %}
+    {% endwith %}
+
+    <!-- Check whether there are any saved orders -->
+    {% if orders %}
+        <!-- Loop through every order retrieved from the database -->
+        {% for order in orders %}
+            <div class="receipt-box" style="background: white; padding: 24px; margin: 20px 0; border-radius: 10px; border: 1px solid #ddd;">
+
+                <!-- Display the order's main details -->
+                <h3>Order {{ order.invoice_number }}</h3>
+                <p><strong>Date:</strong> {{ order.date }}</p>
+                <p><strong>Customer:</strong> {{ order.customer_name }}</p>
+                <p><strong>Order type:</strong> {{ order.order_type }}</p>
+
+                <!-- Only display an address if the order is for delivery -->
+                {% if order.order_type == 'Delivery' %}
+                    <p><strong>Delivery address:</strong> {{ order.address }}</p>
+                {% endif %}
+
+                <hr>
+                <h4>Pizzas</h4>
+
+                <!-- Loop through the pizzas stored in this order -->
+                {% for item, details in order['items'].items() %}
+                    <p>
+                        {{ item }} × {{ details.quantity }}
+                        — ${{ '%.2f' | format(details.price * details.quantity) }}
+                    </p>
+                {% endfor %}
+
+                <!-- Display drinks and sides if any were selected -->
+                {% if order.addons %}
+                    <h4>Drinks &amp; Sides</h4>
+                    {% for addon, price in order['addons'].items() %}
+                        <p>{{ addon }} — ${{ '%.2f' | format(price) }}</p>
+                    {% endfor %}
+                {% endif %}
+
+                <!-- Display the final total for this order -->
+                <h3>Total: ${{ '%.2f' | format(order.total) }}</h3>
+
+                <!-- Form that lets the user remove this saved order -->
+                <form action="{{ url_for('cancel_saved_order', order_id=order.order_id) }}"
+                      method="post"
+                      onsubmit="return confirm('Remove this order from your history?');">
+                    <button type="submit">Remove from History</button>
+                </form>
+            </div>
+        {% endfor %}
+
+    <!-- Show this message when no orders have been saved -->
+    {% else %}
+        <p>You have no previous orders yet. Place an order to see it here.</p>
+        <!-- Link to the online ordering page -->
+        <a href="{{ url_for('order') }}" class="order-button">Order Now</a>
+    {% endif %}
+</div>
+{% endblock %}
