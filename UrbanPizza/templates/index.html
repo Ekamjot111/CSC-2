@@ -1,56 +1,56 @@
 {% extends "base.html" %}
 {% block title %}Urban Pizza - Home{% endblock %}
 {% block content %}
-
-<!-- Section 1) Big Pop Up Header -->
-
-<!-- Giving classes such as "hero", "order-button" for direct css editing -->
+<!-- Section 1: Main hero banner -->
 <section class="hero">
     <div class="hero-div">
-        <p >WELCOME TO URBAN PIZZA</p>
+        <p>WELCOME TO URBAN PIZZA</p>
         <h1>FRESH. HOT.<br>DELICIOUS.</h1>
         <p>Delicious pizzas made your way. Choose from our range of classic, vegetarian and gourmet pizzas.</p>
         <a href="{{ url_for('order') }}" class="order-button">ORDER NOW</a>
         <a href="{{ url_for('menu') }}" class="menu-button">VIEW MENU</a>
     </div>
+    
+    <!-- Main hero pizza image -->
     <div class="hero-image">
-        <img src="{{ url_for('static', filename='images/hero-pizza.jpg') }}" alt="Fresh Urban Pizza">
+        <img src="{{ url_for('static', filename='images/mainpizza.jpeg') }}"
+             alt="Fresh Urban Pizza">
     </div>
 </section>
 
-<!-- Section 2) Popular pizzas section with 3 pizzas -->
-
-<!-- Giving each popular pizzas classes "pizza-cards" -->
+<!-- Section 2: Popular pizzas -->
 <section class="favourites">
     <div class="section-heading">
         <p class="small-heading">CUSTOMER FAVOURITES</p>
-        <h2>POPULAR PIZZAS</h2>
+        <h2>POPULAR PIZZA</h2>
     </div>
     <div class="pizza-cards">
         <div class="pizza-card">
-            <!-- Images --> 
-            <img src="{{ url_for('static', filename='images/pepperoni.jpg') }}" alt="Pepperoni Pizza">
-            <h3>Pepperoni</h3>
-            <p>A classic pizza topped with cheese and pepperoni.</p>
+            <img src="{{ url_for('static', filename='images/NewYorkStylePepperoni.png') }}"
+                 alt="New York Style Pepperoni Pizza">
+            <h3>New York Style Pepperoni</h3>
+            <p>Loaded with double pepperoni, mozzarella cheese and signature tomato sauce.</p>
             <a href="{{ url_for('order') }}">Order Now</a>
         </div>
         <div class="pizza-card">
-            <img src="{{ url_for('static', filename='images/margherita.jpg') }}" alt="Margherita Pizza">
-            <h3>Margherita</h3>
-            <p>Fresh tomato, cheese and delicious herbs.</p>
+            <img src="{{ url_for('static', filename='images/VeggieCentral.png') }}"
+                 alt="Veggie Central Pizza">
+            <h3>Veggie Central</h3>
+            <p>Packed with fresh garden vegetables, herbs and rich cheese.</p>
             <a href="{{ url_for('order') }}">Order Now</a>
         </div>
         <div class="pizza-card">
-            <img src="{{ url_for('static', filename='images/paneer.jpg') }}" alt="Paneer Pizza">
-            <h3>BBQ Paneer</h3>
-            <p>Paneer with BBQ sauce and fresh toppings.</p>
+            <img src="{{ url_for('static', filename='images/SpicyMeatMess.png') }}"
+                 alt="Spicy Meat Mess Pizza">
+            <h3>Spicy Meat Mess</h3>
+            <p>A fiery combination of spicy meats, chillies and melted cheese.</p>
             <a href="{{ url_for('order') }}">Order Now</a>
         </div>
     </div>
 </section>
 
-<!-- Section 3) WHY statement with benefits and features of the platform/business-->
- <section class="why-us">
+<!-- Section 3: Why choose us -->
+<section class="why-us">
     <div class="section-heading">
         <p class="small-heading">WHY CHOOSE US?</p>
         <h2>MADE FOR PIZZA LOVERS</h2>
