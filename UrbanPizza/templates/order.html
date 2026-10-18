@@ -67,7 +67,7 @@
         <ul>
             {% for item, details in cart.items() %}
                 <li>
-                    <strong>{{ item }}</strong> - {{ details['quantity'] }} x ${{ '%.2f' % details['price'] }} = ${{ '%.2f' % (details['quantity'] * details['price']) }}
+                    <strong>{{ item }}</strong> {{ details['quantity'] }} x ${{ '%.2f' % details['price'] }} = ${{ '%.2f' % (details['quantity'] * details['price']) }}
                     <a href="{{ url_for('remove_from_cart', item=item) }}">[Remove]</a>
                 </li>
             {% endfor %}
@@ -91,7 +91,7 @@
             <legend>3. Delivery & Customer Details</legend>
             <div>
                 <label for="customer_name">Customer Name:</label>
-                <input type="text" name="customer_name" id="customer_name" required placeholder="John Doe">
+                <input type="text" name="customer_name" id="customer_name" required pattern="[A-Za-zÀ-ÿ\s]+" title="Please enter a valid name using letters only." placeholder="John Doe">
             </div>
             <div>
                 <label for="phone">Phone Number:</label>
@@ -106,7 +106,8 @@
             </div>
             <div>
                 <label for="address">Delivery Address:</label>
-                <input type="text" name="address" id="address" placeholder="123 Main Street">
+                <!-- Added required so it shows the native browser warning popup if left blank -->
+                <input type="text" name="address" id="address" required placeholder="123 Main Street (or type Pickup)">
             </div>
         </fieldset>
         <h4>Delivery Fee: ${{ '%.2f' % delivery_fee }}</h4>
@@ -115,4 +116,5 @@
         <button type="submit" formaction="{{ url_for('cancel_order') }}" formnovalidate>Clear Cart</button>
     </form>
 </div>
+
 {% endblock %}
