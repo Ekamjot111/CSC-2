@@ -163,6 +163,12 @@ def checkout():
     if not customer_name:
         flash('Please enter your name.')
         return redirect(url_for('order'))
+    
+    # Check if the customer name contains numbers or invalid symbols
+    if customer_name.isdigit() or not all(char.isalpha() or char.isspace() for char in customer_name):
+        flash('Please enter a valid customer name (numbers/symbols are not allowed).')
+        return redirect(url_for('order'))
+
     if not phone:
         flash('Please enter your phone number.')
         return redirect(url_for('order'))
